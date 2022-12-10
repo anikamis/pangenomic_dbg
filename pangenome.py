@@ -22,13 +22,16 @@ def main():
     if compress:
         graph, maxlen = get_non_branching(graph)
 
+
     colors = generate_colors(strains)
     nodes, strains, links = graph_to_json(graph, colors, strainmap, k, maxlen)
     write_json(nodes, strains, links, json_outfix)
 
     if query:
-        unique = get_unique(query_search, graph, colors, strainmap)
+        unique = get_unique(query_search, graph, strainmap)
         graph_to_fasta(query_search, unique)
+
+    return
 
 
 def parse_args(args):
@@ -81,37 +84,27 @@ def print_usage():
 def graph_to_fasta(strain, graph):
     with open(strain + ".fasta", "w") as fp:
         for i, n in enumerate(graph.nodes.keys()):
-            fp.write(">" + strain + "_unique_seq_" + i + "\n")
+            fp.write(">" + strain + "_unique_seq_" + str(i) + "\n")
             fp.write(n + "\n")
 
 
-def filter_graph(graph, color):
+def filter_graph(graph, strains):
     genome = G(dict(), list())
-    for n in graph.nodes.values():
-        if n.color == color:
-            genome.nodes[n.label] = n.copy()
+
+    for n_label, n in graph.nodes.items():
+        if n.strains == strains:
+            genome.nodes[n_label] = n.copy()
 
     for e in graph.edges:
-        if e.inn.color == color and e.outn.color == color:
+        if e.inn.strains == strains and e.outn.strains == strains:
             genome.edges.append(e.copy())
 
     return genome
 
 
-def get_unique(strains, graph, colors, strainmaps):
-    reverse = {v: k for k, v in strainmaps.items()}
-
-    try:
-        if strains == "core":
-            color = colors[frozenset({strainmaps.keys()})]
-        else:
-            color = colors[frozenset({reverse[strains]})]
-
-    except KeyError:
-        print("Strain not found")
-        return None
-
-    return filter_graph(graph, color)
+def get_unique(query, graph, strainmaps):
+    strains = {query} if query != "core" else {x for x in strainmaps.keys()}
+    return filter_graph(graph, strains)
 
 
 def graph_to_json(graph, colors, strainmap, k, maxlen):
@@ -135,7 +128,7 @@ def generate_colors(strains):
     all_colors = set(["#%06x" % random.randint(0, 0xFFFFFF)
                      for i in range(len(strains))])
 
-    while len(colors) < len(strains):
+    while len(all_colors) != len(strains):
         all_colors.add("#%06x" % random.randint(0, 0xFFFFFF))
 
     colors = dict(map(lambda i, j: (i, j), strains, list(all_colors)))
