@@ -1,5 +1,5 @@
-genomes/s1_GCA_000027325.fasta
-genomes/s3_GCA_000292405.fasta
-genomes/s4_GCA_000292445.fasta
-genomes/s5_GCA_000292485.fasta
-genomes/s6_GCA_000292505.fasta
+s1_GCA_000027325.fasta
+s3_GCA_000292405.fasta
+s4_GCA_000292445.fasta
+s5_GCA_000292485.fasta
+s6_GCA_000292505.fasta
