@@ -12,7 +12,7 @@ example: mycoplasm genitalium (taxid: 2097)
 ### 7. create a directory containing all genome fasta files (e.g. example_runs/genomes)
 
 ## run process:
-### usage: python3 pangenome.py -i <input file> -o <output file> -k <kmer_size> [-u] [-q <query>]
+### usage: python3 pangenome.py -i `<input file>` -o `<output file>` -k `<kmer_size>` [-u] [-q `<query>`]
 ### -i: input text file containing location of genome fasta file for each strain, separated by newlines
 ### -o: desired prefix for json output file of graph
 ### -k: kmer size
