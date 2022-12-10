@@ -4,7 +4,7 @@
 
 1. **Python visualization library** for classical and colored de Bruijn graphs
 
-2. **Python tool to form succinct colored de Bruijn graphs** of pan-genomic sequences
+2. **Python tool to form compressed colored de Bruijn graphs** of pan-genomic sequences
 
 3. **Full-stack app** for compressed colored de Bruijn graph visualizations
 
