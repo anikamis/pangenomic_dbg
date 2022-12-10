@@ -7,7 +7,6 @@ from edge_def import Edge as E
 from node_def import Node as N
 from graph_def import Graph as G
 
-
 def main():
     ret = parse_args(sys.argv[1:])
 
@@ -76,8 +75,7 @@ def parse_args(args):
 
 
 def print_usage():
-    print(
-        "USAGE: python3 pangenome.py -i <input file> -o <output file> -k <kmer_size> [-u] [-q <query>]")
+    print("USAGE: python3 pangenome.py -i <input file> -o <output file> -k <kmer_size> [-u] [-q <query>]")
     return None
 
 
