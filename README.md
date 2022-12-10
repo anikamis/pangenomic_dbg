@@ -8,4 +8,4 @@
 
 3. **Full-stack app** for compressed colored de Bruijn graph visualizations
 
-Please refer the README in each of the subfolders on directions for installation. These should ideally all be run in a local environment. 
+Please refer the README in each of the subfolders on directions for installation/use. These should ideally all be run in a local environment. 
