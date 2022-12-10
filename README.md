@@ -17,7 +17,7 @@ example: mycoplasm genitalium (taxid: 2097)
 ##### -o: desired prefix for json output file of graph
 ##### -k: kmer size
 ##### -u: flag to generate uncompressed pangenome graph (default is compressed) [optional]
-##### -q: name of either a strain or "core", queries graph and outputs fasta file of unique sequences named <query>.fasta [optional]
+##### -q: name of either a strain or "core", queries graph and outputs fasta file of unique sequences named `<query>`.fasta [optional]
 
 
 
