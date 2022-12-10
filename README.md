@@ -1,24 +1,11 @@
-# pangenomic_dbg
+# Genomics Final Project
 
-## data collection:
-example: mycoplasm genitalium (taxid: 2097)
+**Our project is divided into 3 different deliverables:**
 
-##### 1. search on propan (https://ngdc.cncb.ac.cn/propan/search)
-##### 2. navigate to “Analysed Strain Information”
-##### 3. see strains listed by GenBank accession
-##### 4. for any number of strains, click on GenBank accession link to navigate to NCBI 
-##### 5. download assemblies on NCBI (for simplicity purposes at the moment, only choose strains if the assembly file available for download is complete, e.g. there is only one fasta header under which the entire genome sequence is listed)
-##### 6. create a text file containing the locations of genome fastas (e.g. example_runs/strains.txt)
-##### 7. create a directory containing all genome fasta files (e.g. example_runs/genomes)
+1. **Python visualization library** for classical and colored de Bruijn graphs
 
-## run process:
-##### usage: python3 pangenome.py -i `<input file>` -o `<output file>` -k `<kmer_size>` [-u] [-q `<query>`]
-##### -i: input text file containing location of genome fasta file for each strain, separated by newlines
-##### -o: desired prefix for json output file of graph
-##### -k: kmer size
-##### -u: flag to generate uncompressed pangenome graph (default is compressed) [optional]
-##### -q: name of either a strain or "core", queries graph and outputs fasta file of unique sequences named `<query>`.fasta [optional]
+2. **Python tool to form succinct colored de Bruijn graphs** of pan-genomic sequences
 
+3. **Full-stack app** for compressed colored de Bruijn graph visualizations
 
-
-
+Please refer the README in each of the subfolders on directions for installation. These should ideally all be run in a local environment. 
