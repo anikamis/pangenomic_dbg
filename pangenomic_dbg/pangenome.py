@@ -12,9 +12,10 @@ def main():
 
     if ret is None:
         return
-
+    
     files, json_outfix, k, compress, query, query_search = ret
-
+    maxlen = k
+    
     path = "/".join(files.split("/")[:-1])
     strainmap, graph, strains = build_all_files(path, files, k)
 
@@ -64,7 +65,7 @@ def parse_args(args):
                 compress = False
                 optargs = optargs[1:]
 
-            if optargs[0] == "-q":
+            if len(optargs) and optargs[0] == "-q":
                 query = True
                 query_search = optargs[1].strip()
 
@@ -160,7 +161,7 @@ def nodes_to_json(graph, colors, k, maxlen):
         temp["id"] = label
         temp["color"] = colors[frozenset(node.strains)]
         temp["strains"] = list(node.strains)
-        temp["size"] = scale(len(label))
+        temp["size"] = scale(len(label)) if maxlen > k else 4
         nodes.append(temp)
 
     return nodes
